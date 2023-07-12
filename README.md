@@ -17,7 +17,8 @@ This is a Streamlit app that summarizes a PDF book using the OpenAI API. It extr
    git clone https://github.com/elchristog/book-summarizer.git
 
 2. Install the required dependencies:
-3.    ```pip install -r requirements.txt
+    ```shell
+    pip install -r requirements.txt
 
 ## Usage
 - Set up your OpenAI API key. You can obtain an API key from the OpenAI website.
@@ -26,7 +27,8 @@ This is a Streamlit app that summarizes a PDF book using the OpenAI API. It extr
 
 - Run the Streamlit app:
 
-```streamlit run streamlit_app.py
+   ```shell
+   streamlit run streamlit_app.py
 - Access the app through the provided URL in the terminal or your web browser.
 
 - Enter your OpenAI API key in the text input field.

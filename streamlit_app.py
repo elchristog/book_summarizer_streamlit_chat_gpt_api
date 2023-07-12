@@ -46,10 +46,12 @@ if uploaded_file is not None and openai_api_key:
 
     with st.spinner('Summarizing...'):
         for extracted_text in extracted_texts:
-            summarized_texts = summarize_text(openai_api_key, extracted_text)
+            summaries = summarize_text(openai_api_key, extracted_text)
 
-            for i, summary in enumerate(summarized_texts):
+            for i, summary in enumerate(summaries):
                 st.write(f"Summary {i+1}:")
                 st.write(summary)
+                st.write(f"Pages used: {extracted_text.index(summary)+1}")
+
 
 

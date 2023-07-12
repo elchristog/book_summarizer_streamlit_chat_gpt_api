@@ -45,7 +45,6 @@ if uploaded_file is not None and openai_api_key:
         extracted_texts = extract_text_from_pdf(uploaded_file)
 
     with st.spinner('Summarizing...'):
-        all_summaries = ""
         for i, extracted_text in enumerate(extracted_texts):
             summaries = summarize_text(openai_api_key, extracted_text)
 
@@ -57,15 +56,3 @@ if uploaded_file is not None and openai_api_key:
                 st.title(summary_title)
                 st.write(summary)
                 st.write(f"Pages used: {start_page} to {end_page}")
-                all_summaries += f"{summary_title}\n\n{summary}\n\n"
-
-        # Download button
-        if all_summaries:
-            with open("summaries.txt", "w", encoding="utf-8") as file:
-                file.write(all_summaries)
-            st.download_button(
-                label="Download Summaries",
-                data=all_summaries,
-                file_name="summaries.txt",
-                mime="text/plain"
-            )

@@ -1,6 +1,6 @@
 import streamlit as st
 import openai
-from PyPDF2 import PdfReader
+from PyPDF2 import PdfReader, PdfWriter
 import os
 
 def extract_text_from_pdf(pdf_path):
@@ -44,6 +44,8 @@ if uploaded_file is not None and openai_api_key:
     with st.spinner('Extracting text...'):
         extracted_texts = extract_text_from_pdf(uploaded_file)
 
+    pdf_writer = PdfWriter()
+
     with st.spinner('Summarizing...'):
         for i, extracted_text in enumerate(extracted_texts):
             summaries = summarize_text(openai_api_key, extracted_text)
@@ -53,7 +55,18 @@ if uploaded_file is not None and openai_api_key:
 
             for j, summary in enumerate(summaries):
                 summary_title = f"Summary {i+1}-{j+1}"
+                pdf_writer.add_page()
+                pdf_writer.add_text(10, 700, summary_title)
+                pdf_writer.add_text(10, 680, summary)
+                pdf_writer.add_text(10, 660, f"Pages used: {start_page} to {end_page}")
+
                 st.title(summary_title)
                 st.write(summary)
                 st.write(f"Pages used: {start_page} to {end_page}")
 
+    # Save the PDF file
+    output_filename = "summaries.pdf"
+    with open(output_filename, "wb") as output_pdf:
+        pdf_writer.write(output_pdf)
+
+    st.success(f"Summaries saved as {output_filename}")

@@ -1,10 +1,10 @@
 import streamlit as st
 import openai
-from PyPDF2 import PdfFileReader
+from PyPDF2 import PdfReader
 import os
 
 def extract_text_from_pdf(pdf_path):
-    pdf = PdfFileReader(pdf_path)
+    pdf = PdfReader(pdf_path)
     number_of_pages = pdf.getNumPages()
     texts = []
     for page_number in range(number_of_pages):

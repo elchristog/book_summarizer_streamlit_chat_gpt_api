@@ -42,12 +42,14 @@ uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
 
 if uploaded_file is not None and openai_api_key:
     with st.spinner('Extracting text...'):
-        extracted_text = extract_text_from_pdf(uploaded_file)
+        extracted_texts = extract_text_from_pdf(uploaded_file)
 
     with st.spinner('Summarizing...'):
-        summarized_texts = summarize_text(openai_api_key, extracted_text)
+        for extracted_text in extracted_texts:
+            summarized_texts = summarize_text(openai_api_key, extracted_text)
 
-    for i, summary in enumerate(summarized_texts):
-        st.write(f"Summary {i+1}:")
-        st.write(summary)
+            for i, summary in enumerate(summarized_texts):
+                st.write(f"Summary {i+1}:")
+                st.write(summary)
+
 

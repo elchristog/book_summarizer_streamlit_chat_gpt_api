@@ -34,7 +34,7 @@ def summarize_text(openai_api_key, text):
     return summaries
 
 st.title("Book Summarizer")
-
+remember to copy and paste the summary in your word file to read it calmly
 # Input for OpenAI API key
 openai_api_key = st.text_input("Enter OpenAI API key", type="password")
 

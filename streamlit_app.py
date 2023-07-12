@@ -9,7 +9,7 @@ def extract_text_from_pdf(pdf_path):
     texts = []
     for page_number in range(number_of_pages):
         page = pdf.pages[page_number]
-        text = page.extractText()
+        text = page.extract_text()
         texts.append(text)
     return texts
 

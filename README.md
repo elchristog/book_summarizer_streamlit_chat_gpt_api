@@ -2,6 +2,8 @@
 
 This is a Streamlit app that summarizes a PDF book using the OpenAI API. It extracts text from the PDF, splits it into smaller portions, and generates summaries using the OpenAI text-davinci-002 model.
 
+- Try: https://booksummarizerappchatgptapi-he5znxqkfj5.streamlit.app/
+  
 ## Prerequisites
 
 - Python 3.7 or higher

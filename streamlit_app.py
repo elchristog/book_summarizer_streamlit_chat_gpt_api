@@ -5,7 +5,7 @@ import os
 
 def extract_text_from_pdf(pdf_path):
     pdf = PdfReader(pdf_path)
-    number_of_pages = pdf.getNumPages()
+    number_of_pages = len(pdf.pages)
     texts = []
     for page_number in range(number_of_pages):
         page = pdf.getPage(page_number)

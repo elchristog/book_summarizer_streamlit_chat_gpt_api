@@ -48,10 +48,12 @@ if uploaded_file is not None and openai_api_key:
         for i, extracted_text in enumerate(extracted_texts):
             summaries = summarize_text(openai_api_key, extracted_text)
 
+            start_page = i + 1
+            end_page = i + len(summaries)
+
             for j, summary in enumerate(summaries):
                 summary_title = f"Summary {i+1}-{j+1}"
                 st.title(summary_title)
                 st.write(summary)
-                st.write(f"Pages used: {i+1}")
-
+                st.write(f"Pages used: {start_page} to {end_page}")
 

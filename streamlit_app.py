@@ -1,3 +1,4 @@
+import streamlit as st
 import openai
 from PyPDF2 import PdfReader
 import os
